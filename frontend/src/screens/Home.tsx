@@ -9,7 +9,7 @@ function Home() {
         <section className="py-8">
           <div className="flex items-center gap-8">
             <div className="flex flex-col gap-4 w-full text-left">
-              <h1 className="text-5xl font-bold ">
+              <h1 className="text-5xl font-bold">
                 Ajude quem precisa com um clique
               </h1>
 
@@ -36,7 +36,7 @@ function Home() {
 
             <img
               src="AjudaMorador.png"
-              className="flex h-80 rounded-lg shadow-sm self-end"
+              className="flex w-full  rounded-lg shadow-sm self-end"
             />
           </div>
         </section>
@@ -162,9 +162,9 @@ function Home() {
           </div>
         </section>
 
-        <section className="flex bg-teal-100 px-4 py-16 my-8 rounded-lg overflow-hidden shadow-sm">
+        <section className="flex bg-teal-100 p-4 my-8 rounded-lg overflow-hidden shadow-sm">
           <img src="pessoas-org.png" alt="Pessoas se abraçando" />
-          <div className="flex flex-col gap-4 text-left justify-between">
+          <div className="flex flex-col text-left gap-2 justify-around">
             <h2 className="text-3xl font-bold ">
               Sua ONG pode transformar vidas com a gente!
             </h2>

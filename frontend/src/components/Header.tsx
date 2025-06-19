@@ -1,35 +1,65 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 function Header() {
   return (
     <>
-      <header className="flex py-8 justify-between mx-64 ">
-        <nav className="flex gap-6 items-center font-semibold ">
-          <img src="/Logo.png" className="w-20 h-8" />
-          <Link
-            to="/como-ajudar"
-            className="text-gray-700 hover:text-teal-600 hover:underline transition-colors"
+      <header className="flex py-8 justify-between mx-64">
+        <nav className="flex gap-6 items-center font-semibold">
+          <Link to="/">
+            <img src="/Logo.png" className="w-20 h-8" alt="Logo" />
+          </Link>
+
+          <NavLink
+            to="/comoajudar"
+            className={({ isActive }) =>
+              `text-gray-700 transition-colors ${
+                isActive
+                  ? "text-teal-600 underline"
+                  : "hover:text-teal-600 hover:underline"
+              }`
+            }
           >
             Como ajudar
-          </Link>
-          <Link
+          </NavLink>
+
+          <NavLink
             to="/noticias"
-            className="text-gray-700 hover:text-teal-600 hover:underline transition-colors"
+            className={({ isActive }) =>
+              `text-gray-700 transition-colors ${
+                isActive
+                  ? "text-teal-600 underline"
+                  : "hover:text-teal-600 hover:underline"
+              }`
+            }
           >
             Notícias
-          </Link>
-          <Link
-            to="/pontos-de-ajuda"
-            className="text-gray-700 hover:text-teal-600 hover:underline transition-colors"
+          </NavLink>
+
+          <NavLink
+            to="/pontosdeajuda"
+            className={({ isActive }) =>
+              `text-gray-700 transition-colors ${
+                isActive
+                  ? "text-teal-600 underline"
+                  : "hover:text-teal-600 hover:underline"
+              }`
+            }
           >
             Pontos de Ajuda
-          </Link>
-          <Link
+          </NavLink>
+
+          <NavLink
             to="/sobre"
-            className="text-gray-700 hover:text-teal-600 hover:underline transition-colors"
+            className={({ isActive }) =>
+              `text-gray-700 transition-colors ${
+                isActive
+                  ? "text-teal-600 underline"
+                  : "hover:text-teal-600 hover:underline"
+              }`
+            }
           >
             Sobre
-          </Link>
+          </NavLink>
         </nav>
 
         <div className="flex items-center gap-2">

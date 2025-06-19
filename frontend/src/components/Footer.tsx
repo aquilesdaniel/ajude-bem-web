@@ -57,7 +57,7 @@ function Footer() {
           <div className="flex flex-col">
             <div className="space-y-1">
               <h4 className="text-teal-400 font-semibold">Baixe nosso app</h4>
-              <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-md text-sm w-full">
+              <button className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-md text-sm w-full cursor-pointer">
                 Em breve
               </button>
             </div>
