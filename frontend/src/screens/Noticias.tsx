@@ -1,10 +1,10 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
 
 function Noticias() {
   const [noticias, setNoticias] = useState([]);
+  const [mostrarTodas, setMostrarTodas] = useState(false);
 
   useEffect(() => {
     const dados = JSON.parse(localStorage.getItem("noticias") || "[]");
@@ -16,6 +16,8 @@ function Noticias() {
     setNoticias(novasNoticias);
     localStorage.setItem("noticias", JSON.stringify(novasNoticias));
   };
+
+  const noticiasExibidas = mostrarTodas ? noticias : noticias.slice(0, 6);
 
   return (
     <>
@@ -33,7 +35,7 @@ function Noticias() {
         </section>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {noticias.map((noticia: any) => (
+          {noticiasExibidas.map((noticia: any) => (
             <div
               key={noticia.id}
               className="bg-white rounded-lg shadow-sm overflow-hidden relative"
@@ -65,14 +67,16 @@ function Noticias() {
           ))}
         </div>
 
-        <div className="flex justify-center">
-          <Link
-            to="/cadastronoticia"
-            className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-md text-sm"
-          >
-            Cadastrar noticias
-          </Link>
-        </div>
+        {noticias.length > 6 && !mostrarTodas && (
+          <div className="flex justify-center">
+            <button
+              onClick={() => setMostrarTodas(true)}
+              className="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-6 rounded-md text-sm"
+            >
+              Mostrar mais
+            </button>
+          </div>
+        )}
       </main>
       <Footer />
     </>

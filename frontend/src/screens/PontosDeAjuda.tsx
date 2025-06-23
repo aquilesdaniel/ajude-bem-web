@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -9,7 +9,7 @@ type PontoAjuda = {
   endereco: string;
 };
 
-const dados: PontoAjuda[] = [
+const pontosIniciais: PontoAjuda[] = [
   {
     id: 1,
     tipo: "Ponto de coleta de roupas",
@@ -31,30 +31,23 @@ const dados: PontoAjuda[] = [
     endereco:
       "Praça Alegria, 789 - Bairro Sul, Cidade Solidária - SP, 01234-567",
   },
-  {
-    id: 4,
-    tipo: "Ponto de coleta de roupas",
-    regiao: "Zona Leste",
-    endereco:
-      "Rua Esperança, 321 - Bairro Leste, Cidade Solidária - SP, 01234-567",
-  },
-  {
-    id: 5,
-    tipo: "Ponto de arrecadação de brinquedos",
-    regiao: "Zona Oeste",
-    endereco: "Av. União, 654 - Bairro Oeste, Cidade Solidária - SP, 01234-567",
-  },
-  {
-    id: 6,
-    tipo: "Ponto de coleta de alimentos",
-    regiao: "Região Central",
-    endereco:
-      "Rua Esperança, 123 - Bairro Central, Cidade Solidária - SP, 01234-567",
-  },
 ];
 
 function PontosDeAjuda() {
-  const [pontos] = useState<PontoAjuda[]>(dados);
+  const [pontos, setPontos] = useState<PontoAjuda[]>([]);
+  const [mostrarTodos, setMostrarTodos] = useState(false);
+
+  useEffect(() => {
+    const salvos = localStorage.getItem("pontosDeAjuda");
+    if (salvos) {
+      setPontos(JSON.parse(salvos));
+    } else {
+      setPontos(pontosIniciais);
+      localStorage.setItem("pontosDeAjuda", JSON.stringify(pontosIniciais));
+    }
+  }, []);
+
+  const pontosExibidos = mostrarTodos ? pontos : pontos.slice(0, 6);
 
   return (
     <>
@@ -89,7 +82,7 @@ function PontosDeAjuda() {
         </section>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {pontos.map((ponto) => (
+          {pontosExibidos.map((ponto) => (
             <div
               key={ponto.id}
               className="bg-white rounded-lg shadow-sm overflow-hidden flex flex-col justify-between"
@@ -117,11 +110,16 @@ function PontosDeAjuda() {
           ))}
         </div>
 
-        <div className="flex justify-center">
-          <button className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded">
-            Ver mais pontos
-          </button>
-        </div>
+        {pontos.length > 6 && !mostrarTodos && (
+          <div className="flex justify-center mb-8">
+            <button
+              className="bg-teal-600 hover:bg-teal-700 text-white font-semibold py-3 px-8 rounded"
+              onClick={() => setMostrarTodos(true)}
+            >
+              Ver mais pontos
+            </button>
+          </div>
+        )}
       </main>
       <Footer />
     </>

@@ -1,3 +1,4 @@
+import { Facebook, Instagram, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -64,13 +65,13 @@ function Footer() {
 
             <div className="flex justify-between h-full items-end">
               <a href="https://twitter.com">
-                <img src="/icons/twitter.svg" className="w-6 h-6" />
+                <Twitter size={24} />
               </a>
               <a href="https://instagram.com">
-                <img src="/icons/instagram.svg" className="w-6 h-6" />
+                <Instagram size={24} />
               </a>
               <a href="https://facebook.com">
-                <img src="/icons/facebook.svg" className="w-6 h-6" />
+                <Facebook size={24} />
               </a>
             </div>
           </div>

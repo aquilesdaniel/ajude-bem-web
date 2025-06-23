@@ -1,3 +1,4 @@
+import { Search, UserRoundCog } from "lucide-react";
 import { NavLink, Link } from "react-router-dom";
 
 function Header() {
@@ -62,14 +63,22 @@ function Header() {
           </NavLink>
         </nav>
 
-        <div className="flex items-center gap-2">
-          <button className="px-4 py-2 text-sm font-bold text-teal-600 cursor-pointer hover:bg-neutral-100 rounded-lg">
+        <div className="flex items-center gap-4">
+          <button className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-teal-600 border border-transparent hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer">
+            <Search size={18} />
             Buscar
           </button>
 
+          <Link to={"/configuracoes"}>
+            <button className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-teal-600 border border-transparent hover:bg-neutral-100 rounded-lg transition-colors cursor-pointer">
+              <UserRoundCog size={18} />
+              Configurações
+            </button>
+          </Link>
+
           <Link
-            to="/minha-conta"
-            className="px-4 py-2 bg-teal-600 text-white rounded-lg text-sm font-bold hover:bg-teal-700"
+            to="/login"
+            className="px-4 py-2 bg-teal-600 text-white rounded-lg text-sm font-semibold hover:bg-teal-700 transition-colors"
           >
             Minha Conta
           </Link>

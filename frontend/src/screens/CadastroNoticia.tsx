@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 
 function CadastroNoticia() {
   const [form, setForm] = useState({
@@ -56,11 +54,10 @@ function CadastroNoticia() {
 
   return (
     <>
-      <Header />
-      <main className="flex flex-col mx-64 gap-10 min-h-screen">
+      <main className="flex flex-col min-h-screen">
         <section>
-          <h2 className="text-4xl font-bold">Cadastrar nova notícia</h2>
-          <p className="text-gray-500 mt-2 max-w-2xl">
+          <h2 className="text-2xl font-bold mb-2">Cadastrar nova notícia</h2>
+          <p className=" text-sm text-gray-500 mb-6">
             Compartilhe histórias, ações ou informações relevantes com a
             comunidade. Preencha os campos abaixo para publicar uma nova notícia
             no Ajuda Bem.
@@ -191,7 +188,6 @@ function CadastroNoticia() {
           </button>
         </form>
       </main>
-      <Footer />
     </>
   );
 }
